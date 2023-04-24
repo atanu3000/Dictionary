@@ -1,0 +1,13 @@
+body {
+    background-color: #edececd8;
+}
+
+nav {
+    background-color: #fff;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
