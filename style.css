@@ -1,13 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     background-color: #edececd8;
 }
-
+img{
+    width: 30px;
+    rotate: 90deg;
+}
+.img{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
 nav {
     background-color: #fff;
+}
+#output a{
+    color: grey;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 5px
+    gap: 5px;
+}
+#logo{
+    rotate: 0deg;
 }
