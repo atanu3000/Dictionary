@@ -1,4 +1,4 @@
-// document.querySelector('#row2').style.display = 'none';
+document.querySelector('#row2').style.display = 'none';
 let input = document.querySelector('#word');
 let output = document.querySelector('#output');
 let def_head = document.querySelector('#def_head');
@@ -8,7 +8,6 @@ let def_wrap = document.querySelector('.def-wrap');
 let exp_head = document.querySelector('#exp_head');
 let exp = document.querySelector('#examples');
 let word = '';
-// console.log(partOfSpeech);
 
 input.addEventListener('input', () => {
 
