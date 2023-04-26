@@ -1,4 +1,4 @@
-document.querySelector('#row2').style.display = 'none';
+// document.querySelector('#row2').style.display = 'none';
 let input = document.querySelector('#word');
 let output = document.querySelector('#output');
 let def_head = document.querySelector('#def_head');
@@ -8,13 +8,21 @@ let def_wrap = document.querySelector('.def-wrap');
 let exp_head = document.querySelector('#exp_head');
 let exp = document.querySelector('#examples');
 let word = '';
+// console.log(partOfSpeech);
+
 input.addEventListener('input', () => {
+
     word = input.value;
+
+    // clear previous records
+    def_wrap.innerHTML = '';
+    exp.innerHTML = '';
 
 
     console.log((word));
     let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-    // console.log(apiURL);
+    
+    // fetching the entire details for the ${word}
     fetch(apiURL)
         .then((reponse) => {
             if (reponse.status == 404) {
@@ -33,6 +41,7 @@ input.addEventListener('input', () => {
             let exp_data = data[0].meanings[0].definitions;
             let def_data = data[0].meanings;
 
+            // for showing the examples...
             let i = 1;
             exp_data.forEach(element => {
                 if (element.example != undefined) {
@@ -41,23 +50,15 @@ input.addEventListener('input', () => {
                 }
             });
 
-            // for showing the definitions 
+            // for showing the definitions...
             def_data.forEach(element => {
                 if (element.partOfSpeech != undefined) {
-                    def_wrap.innerHTML += ("<br />" + element.partOfSpeech + "<br />" + element.definitions[0].definition + "<br />")
+                    partOfSpeech.innerText = element.partOfSpeech;
+                    definitions.innerText = element.definitions[0].definition;
+                    console.log(partOfSpeech);
+                    def_wrap.innerHTML += ("<br />" + partOfSpeech.outerHTML +  definitions.outerHTML)
                 }
-                // console.log(element);
-                // console.log(element.definitions[0]);
-
-
-            });
+             });
         })
         .catch((error) => { console.log(error) });
-    // console.log(word.length);
-
-    output.innerHTML = '';
-    def_head.inne = '';
-    def_wrap.innerHTML = '';
-    exp.innerHTML = '';
-    exp_head.innerHTML = '';
 });
